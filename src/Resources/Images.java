@@ -38,6 +38,7 @@ public class Images {
     public static BufferedImage[] BTitle;
     public static BufferedImage[] Options;
     public static BufferedImage[] Runes;
+    public static BufferedImage[] Coin;
     public static ImageIcon icon;
     public static BufferedImage[] FireBallLeft;
     public static BufferedImage[] FireBallRight;
@@ -49,6 +50,7 @@ public class Images {
 
     public Images() {
 
+    	
         SpriteSheet newsheet = new SpriteSheet(Images.loadImage("/Sheets/SpriteSheet.png"));
         SpriteSheet numsheet = new SpriteSheet(Images.loadImage("/Sheets/numsheet.png"));
         SpriteSheet runesheet = new SpriteSheet(Images.loadImage("/Sheets/runes.png"));
@@ -79,6 +81,7 @@ public class Images {
         BTitle = new BufferedImage[2];
         Options = new BufferedImage[2];
         Runes = new BufferedImage[36];
+        Coin = new BufferedImage [4];
 
         FireBallLeft = new BufferedImage[6];
         FireBallRight = new BufferedImage[6];
@@ -89,6 +92,12 @@ public class Images {
 
 
         try {
+        	
+        	Coin[0] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
+        	Coin[1] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
+        	Coin[2] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
+        	Coin[3] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
+        	
 
             loading = ImageIO.read(getClass().getResourceAsStream("/Sheets/loading.png"));
             spellGUI = ImageIO.read(getClass().getResourceAsStream("/Sheets/SpellGUI.png"));
@@ -105,6 +114,13 @@ public class Images {
             BTitle[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitleP.png"));
             Options[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
             Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
+            
+            
+            
+            
+            
+            
+            
 
             //icon
             icon = new ImageIcon(runesheet.crop(Rwidth*1,Rheight*0,Rwidth,Rheight));
