@@ -46,6 +46,8 @@ public class BaseWorld {
         if(countP>=30){
             countP=30;
         }
+        
+        
 
         if(handler.getKeyManager().pbutt && countP>=30){
             handler.getMouseManager().setUimanager(null);

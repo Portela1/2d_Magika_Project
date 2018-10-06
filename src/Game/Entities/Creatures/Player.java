@@ -110,6 +110,18 @@ public class Player extends CreatureBase {
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_C)){
             readyFireAttack();
         }
+        
+        
+        
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_SHIFT)){
+        	health+=10;
+        	if (health > 75)
+        	{
+        		health =75;
+        	}
+        	
+        	
+        }
 
         // Attack
         if(handler.getKeyManager().attbut) {

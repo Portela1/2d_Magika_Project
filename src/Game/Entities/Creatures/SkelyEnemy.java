@@ -19,16 +19,19 @@ public class SkelyEnemy extends CreatureBase  {
     private Animation animDown, animUp, animLeft, animRight;
 
     private Boolean attacking=false;
+    public static Boolean stat = false;
 
     private int animWalkingSpeed = 150;
     private Inventory Skelyinventory;
     private Rectangle SkelyCam;
 
-    private int healthcounter =0;
+    private int healthcounter = 0;
 
     private Random randint;
     private int moveCount=0;
     private int direction;
+    
+    
 
     public SkelyEnemy(Handler handler, float x, float y) {
         super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT);
@@ -190,6 +193,7 @@ public class SkelyEnemy extends CreatureBase  {
 
     @Override
     public void die() {
-    	
+    	 handler.getWorld().getItemManager().addItem(Item.coin.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+    	 stat = true;
     }
 }

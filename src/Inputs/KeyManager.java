@@ -10,7 +10,11 @@ public class KeyManager implements KeyListener {
 	public boolean attbut=false;
 	public boolean fattbut=false;
 	public boolean pbutt=false;
-
+	
+	
+	public boolean tab = false;
+	public boolean shift = false;
+	public boolean xbut = false;
 
 	public KeyManager(){
 
@@ -43,6 +47,11 @@ public class KeyManager implements KeyListener {
 		fattbut = keys[KeyEvent.VK_C];
 		pbutt = keys[KeyEvent.VK_ESCAPE];
 
+		
+		tab = keys[KeyEvent.VK_TAB];
+		shift = keys[KeyEvent.VK_SHIFT];
+		xbut = keys[KeyEvent.VK_X];
+		
 	}
 
 	@Override
