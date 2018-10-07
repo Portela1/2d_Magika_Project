@@ -39,6 +39,7 @@ public class Images {
     public static BufferedImage[] Options;
     public static BufferedImage[] Runes;
     public static BufferedImage[] Coin;
+    public static BufferedImage key;
     public static ImageIcon icon;
     public static BufferedImage[] FireBallLeft;
     public static BufferedImage[] FireBallRight;
@@ -82,6 +83,7 @@ public class Images {
         Options = new BufferedImage[2];
         Runes = new BufferedImage[36];
         Coin = new BufferedImage [4];
+       
 
         FireBallLeft = new BufferedImage[6];
         FireBallRight = new BufferedImage[6];
@@ -97,6 +99,8 @@ public class Images {
         	Coin[1] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
         	Coin[2] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
         	Coin[3] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
+        	
+        	key = ImageIO.read(getClass().getResourceAsStream("/Sheets/key1D.png"));
         	
 
             loading = ImageIO.read(getClass().getResourceAsStream("/Sheets/loading.png"));
