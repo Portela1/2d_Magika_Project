@@ -41,7 +41,7 @@ public class Player extends CreatureBase {
 
     private int animWalkingSpeed = 150;
     private int animFireSpeed = 250;
-    private int FireSpeed = 2;
+    private int FireSpeed = 3;
     private int FireMove = 0;
     private int movexp,moveyp,movexn,moveyn,tempmoveyp,tempmovexn,tempmoveyn,tempmovexp,fy,fx;
 
@@ -57,7 +57,7 @@ public class Player extends CreatureBase {
         bounds.width=16*2;
         bounds.height=14*2;
         health=75;
-        attack=7;
+        attack=8;
 
 
         animDown = new Animation(animWalkingSpeed,Images.player_front);
