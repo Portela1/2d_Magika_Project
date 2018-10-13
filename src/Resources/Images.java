@@ -38,8 +38,24 @@ public class Images {
     public static BufferedImage[] BTitle;
     public static BufferedImage[] Options;
     public static BufferedImage[] Runes;
-    public static BufferedImage[] Coin;
+    
+    
+    
+    public static BufferedImage Coin;
     public static BufferedImage key;
+    public static BufferedImage LessDame;
+    public static BufferedImage CompPower;
+    public static BufferedImage MoreAta;
+    public static BufferedImage MoreSpeed;
+    
+    public static BufferedImage AtaRock;
+    public static BufferedImage CoinRock;
+    public static BufferedImage DefRock;
+    public static BufferedImage FireRock;
+    public static BufferedImage SpeedRock;
+    
+    
+    
     public static ImageIcon icon;
     public static BufferedImage[] FireBallLeft;
     public static BufferedImage[] FireBallRight;
@@ -62,7 +78,7 @@ public class Images {
 
 
 
-        blocks = new BufferedImage[15];
+        blocks = new BufferedImage[20];
 
         player_left = new BufferedImage[4];
         player_right = new BufferedImage[4];
@@ -82,8 +98,7 @@ public class Images {
         BTitle = new BufferedImage[2];
         Options = new BufferedImage[2];
         Runes = new BufferedImage[36];
-        Coin = new BufferedImage [4];
-       
+        
 
         FireBallLeft = new BufferedImage[6];
         FireBallRight = new BufferedImage[6];
@@ -95,14 +110,21 @@ public class Images {
 
         try {
         	
-        	Coin[0] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
-        	Coin[1] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
-        	Coin[2] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
-        	Coin[3] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
-        	
+        	Coin = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
         	key = ImageIO.read(getClass().getResourceAsStream("/Sheets/key1D.png"));
-        	
-
+        	LessDame = ImageIO.read(getClass().getResourceAsStream("/Sheets/LessDame.png"));
+            CompPower = ImageIO.read(getClass().getResourceAsStream("/Sheets/CompPower.png"));
+            MoreAta = ImageIO.read(getClass().getResourceAsStream("/Sheets/MoreAta.png"));
+            MoreSpeed = ImageIO.read(getClass().getResourceAsStream("/Sheets/MoreSpeed.png"));
+            
+            blocks[15] = ImageIO.read(getClass().getResourceAsStream("/Sheets/AtaRock.png"));
+            blocks[16] = ImageIO.read(getClass().getResourceAsStream("/Sheets/CoinRock.png"));
+            blocks[17] = ImageIO.read(getClass().getResourceAsStream("/Sheets/DefRock.png"));
+            blocks[18] = ImageIO.read(getClass().getResourceAsStream("/Sheets/FireRock.png"));
+            blocks[19] = ImageIO.read(getClass().getResourceAsStream("/Sheets/SpeedRock.png"));
+          
+            
+            
             loading = ImageIO.read(getClass().getResourceAsStream("/Sheets/loading.png"));
             spellGUI = ImageIO.read(getClass().getResourceAsStream("/Sheets/SpellGUI.png"));
 

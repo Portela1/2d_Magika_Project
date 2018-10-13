@@ -5,6 +5,8 @@ import Resources.Images;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
+
 /**
  * Created by Elemental on 1/1/2017.
  */
@@ -27,6 +29,10 @@ public class Tile {
     public static Tile topwallTile = new BorderTile(Images.blocks[10],10);
     public static Tile lowerwallTile = new BorderTile(Images.blocks[11],11);
 
+
+   
+    
+    
     //CLASS
 
 
