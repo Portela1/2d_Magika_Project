@@ -79,7 +79,7 @@ public class Inventory {
     private void renderItems(Graphics g) {
     	
     	int count = 0;
-    	for(int i = 0; i<inventoryItems.size(); i++) {
+    	for(int i = 0; i < inventoryItems.size(); i++) {
     		g.drawImage(inventoryItems.get(i).getTexture(), 25 + count, 24, inventoryItems.get(i).getWidth(), inventoryItems.get(i).getHeight(), null);
             g.drawString(String.valueOf(inventoryItems.get(i).getCount()), 25+count+33,25+35);
             count+=61;
