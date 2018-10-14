@@ -56,8 +56,10 @@ public class Player extends CreatureBase {
         bounds.y=18*2;
         bounds.width=16*2;
         bounds.height=14*2;
+        
+        
         health=75;
-        attack=8;
+        attack=4;
 
 
         animDown = new Animation(animWalkingSpeed,Images.player_front);
@@ -110,14 +112,15 @@ public class Player extends CreatureBase {
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_C)){
             readyFireAttack();
         }
-        
-        
-        
+     
+        power();
+        speedMove();
+ 
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_SHIFT)){
-        	health+=10;
+        	health+=2;
         	if (health > 75)
         	{
-        		health =75;
+        		health = 75;
         	}
         	
         	
@@ -206,6 +209,34 @@ public class Player extends CreatureBase {
             }
         }
     }
+    
+    public void speedMove () {
+    	for (Item i : getInventory().getInventoryItems()) {
+    		if(i.getName() == "SpeedCoin") {
+    			System.out.println("Run");
+    			i.setCount(i.getCount() - 1);
+    			speed++;
+    		}
+    	}
+    }
+    public void lives() {
+    	for (Item i : getInventory().getInventoryItems()) {
+    		if(i.getName() == "DefCoin" && health <= 0) {
+    			System.out.println("Revive");
+    			i.setCount(i.getCount() - 1);
+    			health+=75;		
+    		}}
+    	
+    }
+    
+    public void power(){
+    	for (Item i : getInventory().getInventoryItems()) {
+    		if(i.getName() == "AtaCoin") {
+    			System.out.println("Power");
+    			i.setCount(i.getCount() - 1);
+    			attack+=4;
+    		}}
+    }
 
     @SuppressWarnings("Duplicates")
     @Override
@@ -253,8 +284,8 @@ public class Player extends CreatureBase {
 
     @Override
     public void die(){
-        System.out.println("You lose");
-        State.setState(handler.getGame().menuState);
+    	System.out.println("You lose");
+    	State.setState(handler.getGame().menuState);	   
     }
 
     private void getInput(){
