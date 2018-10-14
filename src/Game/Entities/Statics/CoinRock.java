@@ -78,7 +78,7 @@ public class CoinRock extends StaticEntity {
     @Override
     public void die() {
     	randint=new Random();
-        RNGR=randint.nextInt(3);
+        RNGR=randint.nextInt(4)*1;
         System.out.println(RNGR);
          
         for(int i = 0; i < RNGR; i++) { 
