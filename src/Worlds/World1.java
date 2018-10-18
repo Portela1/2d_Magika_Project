@@ -21,7 +21,7 @@ public class World1 extends BaseWorld{
         caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
 
         
-       entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
+        entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
         
         entityManager.addEntity(new Tree(handler, 100, 250));
         entityManager.addEntity(new Rock(handler, 100, 450));
