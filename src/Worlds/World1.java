@@ -1,7 +1,9 @@
 package Worlds;
 
+import Game.Entities.EntityBase;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
+import Game.Entities.Creatures.SecondEnemy;
 import Game.Entities.Statics.*;
 import Main.Handler;
 
@@ -31,7 +33,7 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Rock(handler, 700, 83));
        
         entityManager.addEntity(new SkelyEnemy(handler, 1150, 100));
-        entityManager.addEntity(new SkelyEnemy(handler, 1250, 200));
+        
       
         
         entityManager.addEntity(new FireRock(handler, 750, 83));
@@ -41,10 +43,10 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new CoinRock(handler, 750, 400));
         
         entityManager.addEntity(new SpeedRock(handler, 234, 122));
-        entityManager.addEntity(new SpeedRock(handler, 240, 324));
+        
         
         entityManager.addEntity(new AtaRock(handler, 432, 543));
-        entityManager.addEntity(new AtaRock(handler, 543, 432));
+       
         
         entityManager.addEntity(new DefRock(handler, 342, 343));
         entityManager.addEntity(new DefRock(handler, 543, 432));
