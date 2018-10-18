@@ -17,13 +17,16 @@ import Main.Handler;
 public class CaveWorld extends BaseWorld{
     private Handler handler;
     private Player player;
-
+    private BaseWorld newWorld;
+    
     public CaveWorld(Handler handler, String path, Player player) {
         super(handler,path,player);
         this.handler = handler;
         this.player=player;
-       
         
+        newWorld = new NewWorld(handler,"res/Maps/newWorld.map",player);
+        
+        entityManager.addEntity(new Door(handler, 800, 0,newWorld));
         
         entityManager.addEntity(new SecondEnemy(handler, 1250, 200));
 
