@@ -17,7 +17,10 @@ import Main.Handler;
 public class NewWorld extends BaseWorld{
     private Handler handler;
     private Player player;
-
+    
+    
+    
+    
     public NewWorld(Handler handler, String path, Player player) {
         super(handler,path,player);
         this.handler = handler;

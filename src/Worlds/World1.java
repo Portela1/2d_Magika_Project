@@ -13,7 +13,7 @@ import Main.Handler;
 public class World1 extends BaseWorld{
 
     private Handler handler;
-    private BaseWorld caveWorld;
+    public static BaseWorld caveWorld;
 
     public World1(Handler handler, String path, Player player){
         super(handler,path,player);
