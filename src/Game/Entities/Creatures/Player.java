@@ -133,8 +133,6 @@ public class Player extends CreatureBase {
         	inventory.addItem(Item.fireRuneItem);
         	inventory.addItem(Item.key);
         	inventory.addItem(Item.LessDame);
-        	inventory.addItem(Item.MoreAta);
-        	inventory.addItem(Item.MoreSpeed);
         	inventory.addItem(Item.rockItem);  	
         }
         
