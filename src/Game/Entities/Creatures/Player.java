@@ -7,6 +7,8 @@ import Game.Items.Item;
 import Game.SpellCast.SpellCastUI;
 import Resources.Animation;
 import Resources.Images;
+import Worlds.CaveWorld;
+import Worlds.World1;
 import Main.Handler;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -138,6 +140,11 @@ public class Player extends CreatureBase {
         
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)){
         
+        	if(handler.getWorld().equals(World1.caveWorld))
+        	handler.setWorld(CaveWorld.newWorld);
+        	else {
+        		handler.setWorld(World1.caveWorld);
+        	}
         }
         
         
