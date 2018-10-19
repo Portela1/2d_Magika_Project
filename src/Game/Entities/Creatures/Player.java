@@ -125,6 +125,24 @@ public class Player extends CreatureBase {
         	
         	
         }
+        
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_X)){
+        	inventory.addItem(Item.woodItem);
+        	inventory.addItem(Item.coin);
+        	inventory.addItem(Item.CompPower);
+        	inventory.addItem(Item.fireRuneItem);
+        	inventory.addItem(Item.key);
+        	inventory.addItem(Item.LessDame);
+        	inventory.addItem(Item.MoreAta);
+        	inventory.addItem(Item.MoreSpeed);
+        	inventory.addItem(Item.rockItem);  	
+        }
+        
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)){
+        
+        }
+        
+        
 
         // Attack
         if(handler.getKeyManager().attbut) {

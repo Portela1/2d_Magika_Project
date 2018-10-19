@@ -33,7 +33,7 @@ public class Item {
     public static Item coin = new Item(Images.Coin,"Coin",3);
     public static Item key = new Item(Images.key,"key",4);
     public static Item CompPower = new Item(Images.CompPower,"CompCoin",5);
-    public static Item LessDame = new Item(Images.LessDame,"DefCoin",5);
+    public static Item LessDame = new Item(Images.LessDame,"DefCoin",6);
     public static Item MoreAta = new Item(Images.MoreAta,"AtaCoin",7);
     public static Item MoreSpeed = new Item(Images.MoreSpeed,"SpeedCoin",8);
 
