@@ -31,6 +31,7 @@ public class Images {
     public static BufferedImage inventory;
     public static BufferedImage title;
     public static BufferedImage door;
+    
     public static BufferedImage E;
     public static BufferedImage EP;
     public static BufferedImage Pause;
@@ -40,6 +41,7 @@ public class Images {
     public static BufferedImage[] Runes;
     
     
+    public static BufferedImage quest1;
     
     public static BufferedImage Coin;
     public static BufferedImage key;
@@ -109,7 +111,8 @@ public class Images {
 
 
         try {
-        	
+        	quest1 = ImageIO.read(getClass().getResourceAsStream("/Sheets/Quest1.png"));
+
         	Coin = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
         	key = ImageIO.read(getClass().getResourceAsStream("/Sheets/key1D.png"));
         	LessDame = ImageIO.read(getClass().getResourceAsStream("/Sheets/LessDame.png"));

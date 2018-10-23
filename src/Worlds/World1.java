@@ -21,15 +21,16 @@ public class World1 extends BaseWorld{
         caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
 
         
-        entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
+        entityManager.addEntity(new Door(handler, 175, 0,caveWorld));
+        entityManager.addEntity(new FirstQuestHuman(handler, 75, 0));
         
-        entityManager.addEntity(new Tree(handler, 100, 250));
-        entityManager.addEntity(new Rock(handler, 100, 450));
+        entityManager.addEntity(new Tree(handler, 1000, 250));
+        entityManager.addEntity(new Rock(handler, 1000, 450));
         entityManager.addEntity(new Tree(handler, 533, 276));
         entityManager.addEntity(new Rock(handler, 684, 1370));
         entityManager.addEntity(new Tree(handler, 765, 888));
-        entityManager.addEntity(new Rock(handler, 88, 1345));
-        entityManager.addEntity(new Tree(handler, 77, 700));
+        entityManager.addEntity(new Rock(handler, 880, 1345));
+        entityManager.addEntity(new Tree(handler, 770, 700));
         entityManager.addEntity(new Rock(handler, 700, 83));
        
         entityManager.addEntity(new SkelyEnemy(handler, 1150, 100));
@@ -42,14 +43,14 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new CoinRock(handler, 750, 300));
         entityManager.addEntity(new CoinRock(handler, 750, 400));
         
-        entityManager.addEntity(new SpeedRock(handler, 234, 122));
+        entityManager.addEntity(new SpeedRock(handler, 834, 122));
         
         
         entityManager.addEntity(new AtaRock(handler, 432, 543));
        
         
-        entityManager.addEntity(new DefRock(handler, 342, 343));
-        entityManager.addEntity(new DefRock(handler, 543, 432));
+        entityManager.addEntity(new DefRock(handler, 842, 343));
+        entityManager.addEntity(new DefRock(handler, 843, 432));
         
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
