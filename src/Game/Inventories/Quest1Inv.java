@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+import com.sun.org.apache.xpath.internal.objects.XObjectFactory;
+
 /**
  * Created by Elemental on 1/3/2017.
  */
@@ -46,6 +48,11 @@ public class Quest1Inv {
             handler.getWorld().getEntityManager().getPlayer().getSpellGUI().setActive(false);
 
         }
+        if(handler.getWorld().getEntityManager().getPlayer().getX()<500 && handler.getWorld().getEntityManager().getPlayer().getY()<500){
+        	active=!active;
+            handler.getWorld().getEntityManager().getPlayer().getSpellGUI().setActive(false);
+
+        }
 
         if(!active){
             return;
@@ -76,7 +83,7 @@ public class Quest1Inv {
     }
 
     //Inventory Methods
-    private void renderItems(Graphics g) {
+    public void renderItems(Graphics g) {
     	
     		int count1 = 0;
     		int count2 = 0;
@@ -86,7 +93,7 @@ public class Quest1Inv {
     		
     		for(int i = 0; i < inventoryItems.size(); i++) {
     			if(i<5) {
-    			g.drawImage(inventoryItems.get(i).getTexture(), 25 + count1, 24, inventoryItems.get(i).getWidth(), inventoryItems.get(i).getHeight(), null);
+    			g.drawImage(inventoryItems.get(i).getTexture(), 100 + count1, 300, inventoryItems.get(i).getWidth(), inventoryItems.get(i).getHeight(), null);
     			g.drawString(String.valueOf(inventoryItems.get(i).getCount()), 25+count1+33,25+35);
     			count1+=61;
     		}else if(i<10) {

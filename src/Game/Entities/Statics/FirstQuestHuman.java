@@ -5,11 +5,14 @@ import Game.Entities.Creatures.SkelyEnemy;
 import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Inventories.Quest1Inv;
+import Game.Items.Item;
 import Main.Handler;
 import Resources.Images;
 import Worlds.BaseWorld;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 /**
  * Created by Elemental on 2/2/2017.
@@ -21,8 +24,8 @@ public class FirstQuestHuman extends StaticEntity {
     private Rectangle ir = new Rectangle();
     public Boolean EP = false;
     public Boolean doorvis = false;
-    private Inventory inventory;
-   
+    private Quest1Inv inventory;
+    private int coins = 3;
 
     public FirstQuestHuman(Handler handler, float x, float y) {
         super(handler, x, y, 64, 100);
@@ -40,7 +43,8 @@ public class FirstQuestHuman extends StaticEntity {
         ir.y=iry;
         ir.x=irx;
         
-        inventory = new Inventory(handler);
+        inventory = new Quest1Inv(handler);
+
     }
 
     @Override
@@ -57,6 +61,7 @@ public class FirstQuestHuman extends StaticEntity {
             EP=false;
         }
         inventory.tick();
+        
     }
 
     @Override
@@ -73,15 +78,16 @@ public class FirstQuestHuman extends StaticEntity {
     private void checkForPlayer(Graphics g, Player p) {
         Rectangle pr = p.getCollisionBounds(0,0);
         
-        if(ir.contains(pr) && !EP){
-            g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
-        }else if(ir.contains(pr) && EP){
-            g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
+       if(ir.contains(pr)){
+            g.drawImage(Images.inventory,(int) x+width,(int) y+60,300,300,null);
+            g.setFont(new Font("ComicSans", Font.BOLD, 20));
+            g.setColor(Color.CYAN);
+            g.drawString("You are missing", (int) x+width,(int) y+20);
+            g.drawImage(Images.Coin, (int )x+width+18,(int) y+82, 40, 40, null);
+            g.drawString(String.valueOf(coins), (int) x+width+18+33,(int) y+135);
             
-            
-
-        }
-
+       }
+       
 
     }
 
@@ -91,11 +97,12 @@ public class FirstQuestHuman extends StaticEntity {
     }
     
     
-    public Inventory getInventory() {
+    public Quest1Inv getInventory() {
         return inventory;
     }
 
-    public void setInventory(Inventory inventory) {
+    public void setInventory(Quest1Inv inventory) {
         this.inventory = inventory;
     }
+    
 }

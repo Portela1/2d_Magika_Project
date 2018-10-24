@@ -50,6 +50,8 @@ public class Inventory {
         if(!active){
             return;
         }
+       
+        
 
         handler.getMouseManager().setUimanager(uiManager);
         uiManager.tick();
@@ -106,7 +108,7 @@ public class Inventory {
     public void addItem(Item item){
         for(Item i : inventoryItems){
             if(i.getId() == item.getId()){
-                i.setCount(1+item.getCount());
+                i.setCount(i.getCount()+1);
                 return;
             }
         }

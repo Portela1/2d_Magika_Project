@@ -128,15 +128,7 @@ public class Player extends CreatureBase {
         	
         }
         
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_X)){
-        	inventory.addItem(Item.woodItem);
-        	inventory.addItem(Item.coin);
-        	inventory.addItem(Item.CompPower);
-        	inventory.addItem(Item.fireRuneItem);
-        	inventory.addItem(Item.key);
-        	inventory.addItem(Item.LessDame);
-        	inventory.addItem(Item.rockItem);  	
-        }
+        
         
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)){
         
@@ -158,7 +150,9 @@ public class Player extends CreatureBase {
 
 
         }
-        
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_X)){
+        	addOneMore();
+        }
 
 
         //Inventory
@@ -166,6 +160,17 @@ public class Player extends CreatureBase {
 
         //spellgui
         spellGUI.tick();
+    }
+    private void addOneMore( ){
+    		
+        	this.inventory.addItem(Item.woodItem);
+        	this.inventory.addItem(Item.coin);
+        	this.inventory.addItem(Item.CompPower);
+        	this.inventory.addItem(Item.fireRuneItem);
+        	this.inventory.addItem(Item.key);
+        	this.inventory.addItem(Item.LessDame);
+        	this.inventory.addItem(Item.rockItem);  	
+        
     }
 
     @Override
@@ -196,6 +201,7 @@ public class Player extends CreatureBase {
 
         }
         g.setColor(Color.white);
+        g.setFont(new Font("ComicSans", Font.PLAIN, 10));
         g.drawString("Health: " + getHealth(),(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()-10));
 
 
