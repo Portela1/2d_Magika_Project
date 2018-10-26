@@ -1,6 +1,7 @@
 package Worlds;
 
 import Game.Entities.EntityBase;
+import Game.Entities.Creatures.Companion;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.Creatures.SecondEnemy;
@@ -51,7 +52,8 @@ public class World1 extends BaseWorld{
         
         entityManager.addEntity(new DefRock(handler, 842, 343));
         entityManager.addEntity(new DefRock(handler, 843, 432));
-        
+      
+        entityManager.addEntity(new Companion(handler, spawnX+50, spawnY));
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
     }

@@ -1,4 +1,5 @@
 package Worlds;
+import Game.Entities.Creatures.Companion;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SecondEnemy;
 import Game.Entities.Statics.AtaRock;

@@ -20,7 +20,7 @@ public class Inventory {
     private boolean active = false;
     private UIManager uiManager;
     private static ArrayList<Item> inventoryItems;
-
+ 
     public Inventory(Handler handler){
 
         this.handler=handler;
@@ -106,17 +106,24 @@ public class Inventory {
     		}}}
 
     public void addItem(Item item){
+    	
         for(Item i : inventoryItems){
             if(i.getId() == item.getId()){
                 i.setCount(i.getCount()+1);
+               
                 return;
             }
+            
+           
         }
         if(item.getId()==2){
             handler.getWorld().getEntityManager().getPlayer().getSpellGUI().addSpell(new FireBallSpell(handler));
         }
-        inventoryItems.add(item);
-
+        inventoryItems.add(item);	
+        if(item.getCount() == 0) {
+        	item.setCount(item.getCount()+1);
+        }
+        
     }
     
     public static int ItemCount(Item item) {

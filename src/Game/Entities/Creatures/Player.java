@@ -13,7 +13,7 @@ import Main.Handler;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-
+import Game.Entities.Creatures.Companion;
 /**
  * Created by Elemental on 1/1/2017.
  */
@@ -153,7 +153,9 @@ public class Player extends CreatureBase {
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_X)){
         	addOneMore();
         }
-
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
+        	companionSummon();
+        }
 
         //Inventory
         inventory.tick();
@@ -164,13 +166,12 @@ public class Player extends CreatureBase {
     private void addOneMore( ){
     		
         	this.inventory.addItem(Item.woodItem);
-        	this.inventory.addItem(Item.coin);
         	this.inventory.addItem(Item.CompPower);
         	this.inventory.addItem(Item.fireRuneItem);
-        	this.inventory.addItem(Item.key);
         	this.inventory.addItem(Item.LessDame);
-        	this.inventory.addItem(Item.rockItem);  	
-        
+        	this.inventory.addItem(Item.rockItem);
+        	this.inventory.addItem(Item.key);
+        	this.inventory.addItem(Item.coin);
     }
 
     @Override
@@ -265,6 +266,17 @@ public class Player extends CreatureBase {
     			i.setCount(i.getCount() - 1);
     			attack+=4;
     		}}
+    }
+    //Uses up the compaion coin and summons a companion to your side.
+    public void companionSummon(){
+    	for (Item i : getInventory().getInventoryItems()) {
+    		if(i.getName() == "CompCoin") {
+    			System.out.println("CompanionSummoned");
+    			i.setCount(i.getCount() - 1);
+    			System.out.println("Count reduced");
+    			
+    			
+    			}}
     }
 
     @SuppressWarnings("Duplicates")
