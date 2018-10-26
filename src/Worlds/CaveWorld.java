@@ -1,4 +1,5 @@
 package Worlds;
+import Game.Entities.Creatures.Companion;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SecondEnemy;
 import Game.Entities.Statics.AtaRock;
@@ -29,7 +30,8 @@ public class CaveWorld extends BaseWorld{
         entityManager.addEntity(new Door(handler, 800, 0,newWorld));
         
         entityManager.addEntity(new SecondEnemy(handler, 1250, 200));
-
+        
+        
         
         
         
