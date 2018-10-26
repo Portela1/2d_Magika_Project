@@ -19,7 +19,7 @@ public class Inventory {
     private Handler handler;
     private boolean active = false;
     private UIManager uiManager;
-    private ArrayList<Item> inventoryItems;
+    private static ArrayList<Item> inventoryItems;
 
     public Inventory(Handler handler){
 
@@ -117,6 +117,24 @@ public class Inventory {
         }
         inventoryItems.add(item);
 
+    }
+    
+    public static int ItemCount(Item item) {
+    	int count = 0;
+    	for (Item i : inventoryItems) {
+    		if(i.getId() == item.getId()) {
+    		count = i.getCount();
+    		}
+    	}
+		return count;
+    }
+    
+    public static void ItemSetCount(Item item, int set) {
+    	for (Item i : inventoryItems) {
+    		if(i.getId() == item.getId()) {
+    			i.setCount(set);
+    		}
+    		}
     }
 
     //GET SET

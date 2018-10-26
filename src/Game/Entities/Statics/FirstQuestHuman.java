@@ -1,18 +1,17 @@
 package Game.Entities.Statics;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+
 import Game.Entities.Creatures.Player;
-import Game.Entities.Creatures.SkelyEnemy;
-import Game.GameStates.State;
 import Game.Inventories.Inventory;
-import Game.Inventories.Quest1Inv;
+
 import Game.Items.Item;
 import Main.Handler;
 import Resources.Images;
-import Worlds.BaseWorld;
-
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 /**
  * Created by Elemental on 2/2/2017.
@@ -24,8 +23,9 @@ public class FirstQuestHuman extends StaticEntity {
     private Rectangle ir = new Rectangle();
     public Boolean EP = false;
     public Boolean doorvis = false;
-    private Quest1Inv inventory;
+    public static Boolean stat = false;
     private int coins = 3;
+    private int keys = 1;
 
     public FirstQuestHuman(Handler handler, float x, float y) {
         super(handler, x, y, 64, 100);
@@ -43,7 +43,7 @@ public class FirstQuestHuman extends StaticEntity {
         ir.y=iry;
         ir.x=irx;
         
-        inventory = new Quest1Inv(handler);
+      
 
     }
 
@@ -60,8 +60,7 @@ public class FirstQuestHuman extends StaticEntity {
         }else if(!handler.getKeyManager().attbut){
             EP=false;
         }
-        inventory.tick();
-        
+       
     }
 
     @Override
@@ -83,26 +82,61 @@ public class FirstQuestHuman extends StaticEntity {
             g.setFont(new Font("ComicSans", Font.BOLD, 20));
             g.setColor(Color.CYAN);
             g.drawString("You are missing", (int) x+width,(int) y+20);
+            g.drawString("Press E to Give", (int) x+width,(int) y+50);
             g.drawImage(Images.Coin, (int )x+width+18,(int) y+82, 40, 40, null);
             g.drawString(String.valueOf(coins), (int) x+width+18+33,(int) y+135);
+            g.drawImage(Images.key, (int )x+width+18+56,(int) y+82, 40, 40, null);
+            g.drawString(String.valueOf(keys), (int) x+width+18+33+56,(int) y+135);
+            if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)){
+            	if(Inventory.ItemCount(Item.coin) >= 3 && coins > 0) {
+            		coins -= 3;
+            		Inventory.ItemSetCount(Item.coin, Inventory.ItemCount(Item.coin) - 3);
+            	}
+            	else if (coins > 0){
+            		coins -= Inventory.ItemCount(Item.coin);
+            		Inventory.ItemSetCount(Item.coin, 0);
+            	}
+            	
             
-       }
+               	if(Inventory.ItemCount(Item.key) >= 1 && keys > 0) {
+                	keys -= 1;
+                	Inventory.ItemSetCount(Item.key, Inventory.ItemCount(Item.key) - 1);
+                }
+                else if (keys > 0){
+                	keys -= Inventory.ItemCount(Item.coin);
+                	Inventory.ItemSetCount(Item.coin, 0);
+                }	
+            		
+            		
+            }     	
+            if(coins < 0) { coins = 0; }
+            if(keys < 0) { keys = 0; }
+            
+            
+            if(coins == 0 && keys == 0) {
+            	stat = true;
+            }
+           
+            
+            
+            
+            
+            }}
        
 
-    }
+    
 
-    @Override
-    public void die() {
+	@Override
+	public void die() {
+		
+		
+	}
 
-    }
     
     
-    public Quest1Inv getInventory() {
-        return inventory;
-    }
+    
+   
 
-    public void setInventory(Quest1Inv inventory) {
-        this.inventory = inventory;
-    }
+   
     
 }

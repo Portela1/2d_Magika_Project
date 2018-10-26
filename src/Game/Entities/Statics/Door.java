@@ -58,7 +58,7 @@ public class Door extends StaticEntity {
     @Override
     public void render(Graphics g) {
  
-    	if (SkelyEnemy.stat) {
+    	if (FirstQuestHuman.stat) {
         g.drawImage(Images.door,(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
     	}
         g.setColor(Color.black);
@@ -68,7 +68,7 @@ public class Door extends StaticEntity {
 
     private void checkForPlayer(Graphics g, Player p) {
         Rectangle pr = p.getCollisionBounds(0,0);
-        if (SkelyEnemy.stat) {
+        if (FirstQuestHuman.stat) {
         if(ir.contains(pr) && !EP){
             g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
         }else if(ir.contains(pr) && EP){
