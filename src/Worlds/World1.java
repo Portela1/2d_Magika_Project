@@ -16,10 +16,10 @@ public class World1 extends BaseWorld{
     private Handler handler;
     public static BaseWorld caveWorld;
 
-    public World1(Handler handler, String path, Player player){
-        super(handler,path,player);
+    public World1(Handler handler, String path, Player player, SkelyEnemy skely){
+        super(handler,path,player, skely);
         this.handler = handler;
-        caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
+        caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player, skely);
 
         
         entityManager.addEntity(new Door(handler, 175, 0,caveWorld));
@@ -33,11 +33,7 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Rock(handler, 880, 1345));
         entityManager.addEntity(new Tree(handler, 770, 700));
         entityManager.addEntity(new Rock(handler, 700, 83));
-       
-        entityManager.addEntity(new SkelyEnemy(handler, 1150, 100));
-        
-      
-        
+  
         entityManager.addEntity(new FireRock(handler, 750, 83));
         entityManager.addEntity(new FireRock(handler, 1000, 83));
         
@@ -53,9 +49,11 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new DefRock(handler, 842, 343));
         entityManager.addEntity(new DefRock(handler, 843, 432));
       
-        entityManager.addEntity(new Companion(handler, spawnX+50, spawnY));
+        entityManager.addEntity(new Companion(handler, 0, 0));
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
+        entityManager.getSkely().setX(1150);
+        entityManager.getSkely().setY(100);
     }
 
 }

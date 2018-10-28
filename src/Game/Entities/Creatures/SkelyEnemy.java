@@ -43,8 +43,8 @@ public class SkelyEnemy extends CreatureBase  {
         health=50;
 
         SkelyCam= new Rectangle();
-
-
+        x=this.x;
+        y=this.y;
 
         randint = new Random();
         direction = randint.nextInt(4) + 1;
@@ -194,6 +194,7 @@ public class SkelyEnemy extends CreatureBase  {
     @Override
     public void die() {
     	 handler.getWorld().getItemManager().addItem(Item.key.createNew((int)x + bounds.x,(int)y + bounds.y,1));
-    	
+    	 this.x= 0;
+    	 this.y =0;
     }
 }

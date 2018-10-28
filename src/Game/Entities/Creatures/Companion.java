@@ -21,8 +21,8 @@ public class Companion extends CreatureBase{
     public static Boolean stat = false;
     
     private int animWalkingSpeed = 150;
-    private Inventory Skelyinventory;
-    private Rectangle SkelyCam;
+    private Inventory Compyinventory;
+    private Rectangle CompyCam;
 
     private int healthcounter = 0;
 
@@ -44,19 +44,19 @@ public class Companion extends CreatureBase{
         speed=1.5f;
         health=50;
 
-        SkelyCam= new Rectangle();
-        attack= 0;
+        CompyCam= new Rectangle();
+//        attack= 0;
 
 
         randint = new Random();
         direction = randint.nextInt(4) + 1;
 
-        animDown = new Animation(animWalkingSpeed, Images.SkelyEnemy_front);
-        animLeft = new Animation(animWalkingSpeed,Images.SkelyEnemy_left);
-        animRight = new Animation(animWalkingSpeed,Images.SkelyEnemy_right);
-        animUp = new Animation(animWalkingSpeed,Images.SkelyEnemy_back);
+        animDown = new Animation(animWalkingSpeed,Images.player_front);
+        animLeft = new Animation(animWalkingSpeed,Images.player_left);
+        animRight = new Animation(animWalkingSpeed,Images.player_right);
+        animUp = new Animation(animWalkingSpeed,Images.player_back);
 
-        Skelyinventory= new Inventory(handler);
+        Compyinventory= new Inventory(handler);
     }
 
     @Override
@@ -87,11 +87,19 @@ public class Companion extends CreatureBase{
             healthcounter=0;
         }
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
+        	 if(getVisual() == true) {
+             	setVisual(false);
+             	this.x =0;
+             	this.y= 0;
+             }
+        	 else {
         	setVisual(true);
-        	setAttacking(true);
+        	this.x = handler.getWorld().getEntityManager().getPlayer().getX() + 100;
+        	this.y = handler.getWorld().getEntityManager().getPlayer().getY();
+        	 }
       }
-
-        Skelyinventory.tick();
+       
+        Compyinventory.tick();
 
 
     }
@@ -101,96 +109,138 @@ public class Companion extends CreatureBase{
         xMove = 0;
         yMove = 0;
 
-        SkelyCam.x = (int) (x - handler.getGameCamera().getxOffset() - (64 * 3));
-        SkelyCam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
-        SkelyCam.width = 64 * 7;
-        SkelyCam.height = 64 * 7;
+        CompyCam.x = (int) (x - handler.getGameCamera().getxOffset() - (64 * 3));
+        CompyCam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
+        CompyCam.width = 64 * 7;
+        CompyCam.height = 64 * 7;
+        int adj = 0;
+        if(getVisual() == true) {
+        	if(CompyCam.contains(handler.getWorld().getEntityManager().getSkely().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getSkely().getY() - handler.getGameCamera().getyOffset())
+                    || CompyCam.contains(handler.getWorld().getEntityManager().getSkely().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getSkely().getWidth(), handler.getWorld().getEntityManager().getSkely().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getSkely().getHeight())) {
 
-        if (SkelyCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
-                || SkelyCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getPlayer().getWidth(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getPlayer().getHeight())) {
+                Rectangle cb = getCollisionBounds(0, 0);
+                Rectangle ar = new Rectangle();
+                int arSize = 13;
+                ar.width = arSize;
+                ar.height = arSize;
 
-            Rectangle cb = getCollisionBounds(0, 0);
-            Rectangle ar = new Rectangle();
-            int arSize = 13;
-            ar.width = arSize;
-            ar.height = arSize;
+                if (lu) {
+                    ar.x = cb.x + cb.width / 2 - arSize / 2;
+                    ar.y = cb.y - arSize;
+                } else if (ld) {
+                    ar.x = cb.x + cb.width / 2 - arSize / 2;
+                    ar.y = cb.y + cb.height;
+                } else if (ll) {
+                    ar.x = cb.x - arSize;
+                    ar.y = cb.y + cb.height / 2 - arSize / 2;
+                } else if (lr) {
+                    ar.x = cb.x + cb.width;
+                    ar.y = cb.y + cb.height / 2 - arSize / 2;
+                }
 
-            if (lu) {
-                ar.x = cb.x + cb.width / 2 - arSize / 2;
-                ar.y = cb.y - arSize;
-            } else if (ld) {
-                ar.x = cb.x + cb.width / 2 - arSize / 2;
-                ar.y = cb.y + cb.height;
-            } else if (ll) {
-                ar.x = cb.x - arSize;
-                ar.y = cb.y + cb.height / 2 - arSize / 2;
-            } else if (lr) {
-                ar.x = cb.x + cb.width;
-                ar.y = cb.y + cb.height / 2 - arSize / 2;
-            }
+                for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
+                    if (e.equals(this))
+                        continue;
+                    if(e.getCollisionBounds(0, 0).intersects(ar)){
+                    	checkAttacks();
+                        return;
+                    }
+                }
 
-            for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
-                if (e.equals(this))
-                    continue;
-                if (e.getCollisionBounds(0, 0).intersects(ar) && e.equals(handler.getWorld().getEntityManager().getPlayer())) {
 
-                    checkAttacks();
-                    return;
+                if (x >= handler.getWorld().getEntityManager().getSkely().getX() - 8 && x <= handler.getWorld().getEntityManager().getSkely().getX() + 8) {//nada
+                	xMove = 0;
+                } else if (x < handler.getWorld().getEntityManager().getSkely().getX()) {//move right
+
+                    xMove = speed;
+
+                } else if (x > handler.getWorld().getEntityManager().getSkely().getX()) {//move left
+
+                    xMove = -speed;
+                }
+
+                if (y >= handler.getWorld().getEntityManager().getSkely().getY() - 8 && y <= handler.getWorld().getEntityManager().getSkely().getY() + 8) {//nada
+                    yMove = 0;
+                } else if (y < handler.getWorld().getEntityManager().getSkely().getY()) {//move down
+                    yMove = speed;
+
+                } else if (y > handler.getWorld().getEntityManager().getSkely().getY()) {//move up
+                    yMove = -speed;
+                }
+
+
+            } 
+
+            
+        	
+        	else if (CompyCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset()+ adj, handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset()+ adj)
+                    || CompyCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset()+adj + handler.getWorld().getEntityManager().getPlayer().getWidth(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset()+adj + handler.getWorld().getEntityManager().getPlayer().getHeight())) {
+
+                Rectangle cb = getCollisionBounds(0, 0);
+                Rectangle ar = new Rectangle();
+                int arSize = 13;
+                ar.width = arSize;
+                ar.height = arSize;
+
+                if (lu) {
+                    ar.x = cb.x + cb.width / 2 - arSize / 2;
+                    ar.y = cb.y - arSize;
+                } else if (ld) {
+                    ar.x = cb.x + cb.width / 2 - arSize / 2;
+                    ar.y = cb.y + cb.height;
+                } else if (ll) {
+                    ar.x = cb.x - arSize;
+                    ar.y = cb.y + cb.height / 2 - arSize / 2;
+                } else if (lr) {
+                    ar.x = cb.x + cb.width;
+                    ar.y = cb.y + cb.height / 2 - arSize / 2;
+                }
+
+                for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
+                    if (e.equals(this))
+                        continue;
+                    if(e.getCollisionBounds(0, 0).intersects(ar)){
+                       // checkAttacks();
+                        return;
+                    }
+                }
+
+                
+                if (x >= handler.getWorld().getEntityManager().getPlayer().getX() - 8 && x <= handler.getWorld().getEntityManager().getPlayer().getX() + 8) {//nada
+                    xMove = 0;
+                } else if (x < handler.getWorld().getEntityManager().getPlayer().getX()) {//move right
+
+                    xMove = speed;
+
+                } else if (x > handler.getWorld().getEntityManager().getPlayer().getX()) {//move left
+                    xMove = -speed;
+                }
+
+                if (y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8) {//nada
+                    yMove = 0;
+                } else if (y < handler.getWorld().getEntityManager().getPlayer().getY()) {//move down
+                    yMove = speed;
+
+                } else if (y > handler.getWorld().getEntityManager().getPlayer().getY()) {//move up
+                    yMove = -speed;
                 }
             }
+            
 
-
-            if (x >= handler.getWorld().getEntityManager().getPlayer().getX() - 8 && x <= handler.getWorld().getEntityManager().getPlayer().getX() + 8) {//nada
-
-                xMove = 0;
-            } else if (x < handler.getWorld().getEntityManager().getPlayer().getX()) {//move right
-
-                xMove = speed;
-
-            } else if (x > handler.getWorld().getEntityManager().getPlayer().getX()) {//move left
-
-                xMove = -speed;
-            }
-
-            if (y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8) {//nada
-                yMove = 0;
-            } else if (y < handler.getWorld().getEntityManager().getPlayer().getY()) {//move down
-                yMove = speed;
-
-            } else if (y > handler.getWorld().getEntityManager().getPlayer().getY()) {//move up
-                yMove = -speed;
-            }
-
-
-        } else {
-
-
-            switch (direction) {
-                case 1://up
-                    yMove = -speed;
-                    break;
-                case 2://down
-                    yMove = speed;
-                    break;
-                case 3://left
-                    xMove = -speed;
-                    break;
-                case 4://right
-                    xMove = speed;
-                    break;
-
-            }
         }
+       
+         
+        
     }
 
 
     @Override
     public void render(Graphics g) {
     	if(visual == true) {
-        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight,Images.SkelyEnemy_front,Images.SkelyEnemy_back,Images.SkelyEnemy_left,Images.SkelyEnemy_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight,Images.player_front,Images.player_back,Images.player_left,Images.player_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
         if(isBeinghurt() && healthcounter<=120){
             g.setColor(Color.white);
-            g.drawString("SkelyHealth: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));
+            g.drawString("CompyHealth: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));
         }
     	
     	}
@@ -205,13 +255,6 @@ public class Companion extends CreatureBase{
     	 stat = true;
     }
 
-	public Boolean getAttacking() {
-		return attacking;
-	}
-
-	public void setAttacking(Boolean attacking) {
-		this.attacking = attacking;
-	}
 
     public boolean getVisual() {
 		return visual;

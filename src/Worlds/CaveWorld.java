@@ -2,6 +2,7 @@ package Worlds;
 import Game.Entities.Creatures.Companion;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SecondEnemy;
+import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.Statics.AtaRock;
 import Game.Entities.Statics.CoinRock;
 import Game.Entities.Statics.DefRock;
@@ -20,12 +21,12 @@ public class CaveWorld extends BaseWorld{
     private Player player;
     public static BaseWorld newWorld;
     
-    public CaveWorld(Handler handler, String path, Player player) {
-        super(handler,path,player);
+    public CaveWorld(Handler handler, String path, Player player, SkelyEnemy skely) {
+        super(handler,path,player, skely);
         this.handler = handler;
         this.player=player;
         
-        newWorld = new NewWorld(handler,"res/Maps/newWorld.map",player);
+        newWorld = new NewWorld(handler,"res/Maps/newWorld.map",player, skely);
         
         entityManager.addEntity(new Door(handler, 800, 0,newWorld));
         

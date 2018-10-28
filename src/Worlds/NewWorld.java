@@ -2,6 +2,7 @@ package Worlds;
 import Game.Entities.Creatures.Companion;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SecondEnemy;
+import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.Statics.AtaRock;
 import Game.Entities.Statics.CoinRock;
 import Game.Entities.Statics.DefRock;
@@ -22,13 +23,13 @@ public class NewWorld extends BaseWorld{
     
     
     
-    public NewWorld(Handler handler, String path, Player player) {
-        super(handler,path,player);
+    public NewWorld(Handler handler, String path, Player player, SkelyEnemy skely) {
+        super(handler,path,player, skely);
         this.handler = handler;
         this.player=player;
        
-        
-        
+        entityManager.getPlayer().setX(spawnX);
+        entityManager.getPlayer().setY(spawnY);
         entityManager.addEntity(new SecondEnemy(handler, 1250, 200));
 
         

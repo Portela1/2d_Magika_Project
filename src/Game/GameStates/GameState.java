@@ -2,6 +2,7 @@ package Game.GameStates;
 
 import Game.Entities.Creatures.Companion;
 import Game.Entities.Creatures.Player;
+import Game.Entities.Creatures.SkelyEnemy;
 import Main.Handler;
 import Worlds.BaseWorld;
 import Worlds.World1;
@@ -16,8 +17,8 @@ public class GameState extends State {
     public GameState(Handler handler){
         super(handler);
         Player player = new Player(handler, 100, 100);
-        
-        BaseWorld world = new World1(handler, "res/Maps/map1.map", player);
+        SkelyEnemy skely= new SkelyEnemy(handler, 100, 100);
+        BaseWorld world = new World1(handler, "res/Maps/map1.map", player, skely);
         handler.setWorld(world);
         handler.getWorld().getEntityManager().setPlayer(player);
         

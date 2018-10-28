@@ -273,7 +273,7 @@ public class Player extends CreatureBase {
     		if(i.getName() == "CompCoin") {
     			System.out.println("CompanionSummoned");
     			i.setCount(i.getCount() - 1);
-    			System.out.println("Count reduced");
+    			;
     			
     			
     			}}

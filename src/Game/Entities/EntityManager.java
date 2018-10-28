@@ -1,7 +1,8 @@
 package Game.Entities;
 
-import Game.Entities.Creatures.Companion;
+
 import Game.Entities.Creatures.Player;
+import Game.Entities.Creatures.SkelyEnemy;
 import Main.Handler;
 
 import java.awt.*;
@@ -16,8 +17,16 @@ public class EntityManager {
 
     private Handler handler;
     private Player player;
-    
-    private ArrayList<EntityBase> entities;
+    private SkelyEnemy skely;
+    public SkelyEnemy getSkely() {
+		return skely;
+	}
+
+	public void setSkely(SkelyEnemy skely) {
+		this.skely = skely;
+	}
+
+	private ArrayList<EntityBase> entities;
     private Comparator<EntityBase> renderSorter = new Comparator<EntityBase>(){
         @Override
         public int compare(EntityBase a, EntityBase b) {
@@ -27,11 +36,13 @@ public class EntityManager {
         }
     };
 
-    public EntityManager(Handler handler, Player player){
+    public EntityManager(Handler handler, Player player, SkelyEnemy skely){
         this.handler = handler;
         this.player = player;
+        this.skely= skely;
         entities = new ArrayList<EntityBase>();
         addEntity(player);
+        addEntity(skely);
     }
 
     public void tick(){
