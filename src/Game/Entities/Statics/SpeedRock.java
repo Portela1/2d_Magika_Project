@@ -50,6 +50,10 @@ public class SpeedRock extends StaticEntity {
         } catch (LineUnavailableException e) {
             e.printStackTrace();
         }
+        if(this.health<0){
+        	health = 0;
+        }
+
 
     }
 

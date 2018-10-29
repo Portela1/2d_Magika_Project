@@ -65,6 +65,10 @@ public class CoinRock extends StaticEntity {
             audioClip.stop();
 
         }
+        if(this.health<0){
+        	health = 0;
+        }
+
 
     }
 

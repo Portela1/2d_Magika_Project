@@ -50,6 +50,8 @@ public class FireRock extends StaticEntity {
         } catch (LineUnavailableException e) {
             e.printStackTrace();
         }
+        
+
 
     }
 
@@ -64,6 +66,9 @@ public class FireRock extends StaticEntity {
         if(!isActive()){
             audioClip.stop();
 
+        }
+        if(this.health<0){
+        	health = 0;
         }
 
     }
