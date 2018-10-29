@@ -31,6 +31,8 @@ public class Images {
     public static BufferedImage inventory;
     public static BufferedImage title;
     public static BufferedImage door;
+    public static BufferedImage GO;
+    public static BufferedImage YW;
     
     public static BufferedImage E;
     public static BufferedImage EP;
@@ -112,7 +114,9 @@ public class Images {
 
         try {
         	quest1 = ImageIO.read(getClass().getResourceAsStream("/Sheets/Quest1.png"));
-
+        	
+        	YW = ImageIO.read(getClass().getResourceAsStream("/Sheets/YouWin.png"));
+        	GO = ImageIO.read(getClass().getResourceAsStream("/Sheets/GameOver.png"));
         	Coin = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
         	key = ImageIO.read(getClass().getResourceAsStream("/Sheets/key1D.png"));
         	LessDame = ImageIO.read(getClass().getResourceAsStream("/Sheets/LessDame.png"));
