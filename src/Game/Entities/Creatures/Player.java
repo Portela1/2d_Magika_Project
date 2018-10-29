@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import Game.Entities.Creatures.Companion;
+import Game.Entities.Statics.FirstQuestHuman;
 /**
  * Created by Elemental on 1/1/2017.
  */
@@ -141,6 +142,7 @@ public class Player extends CreatureBase {
         		handler.setWorld(World1.caveWorld);
         		this.x=100;
         		this.y=100;
+        		FirstQuestHuman.stat = true;
         	}
         }
         

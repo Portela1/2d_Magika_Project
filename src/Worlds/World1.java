@@ -26,17 +26,10 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Door(handler, 175, 0,caveWorld));
         entityManager.addEntity(new FirstQuestHuman(handler, 75, 0));
         
-        entityManager.addEntity(new Tree(handler, 1000, 250));
-        entityManager.addEntity(new Rock(handler, 1000, 450));
-        entityManager.addEntity(new Tree(handler, 533, 276));
-        entityManager.addEntity(new Rock(handler, 684, 1370));
-        entityManager.addEntity(new Tree(handler, 765, 888));
-        entityManager.addEntity(new Rock(handler, 880, 1345));
-        entityManager.addEntity(new Tree(handler, 770, 700));
-        entityManager.addEntity(new Rock(handler, 700, 83));
+       
   
         entityManager.addEntity(new FireRock(handler, 750, 83));
-        entityManager.addEntity(new FireRock(handler, 1000, 83));
+        entityManager.addEntity(new FireRock(handler, 1000, 1000));
         
         entityManager.addEntity(new CoinRock(handler, 750, 300));
         entityManager.addEntity(new CoinRock(handler, 100, 600));
