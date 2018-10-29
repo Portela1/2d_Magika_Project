@@ -23,8 +23,8 @@ public class NewWorld extends BaseWorld{
     
     
     
-    public NewWorld(Handler handler, String path, Player player, SkelyEnemy skely) {
-        super(handler,path,player, skely);
+    public NewWorld(Handler handler, String path, Player player, SkelyEnemy skely, Companion compy) {
+        super(handler,path,player, skely, compy);
         this.handler = handler;
         this.player=player;
         
@@ -33,7 +33,7 @@ public class NewWorld extends BaseWorld{
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
         
-        entityManager.addEntity(new SecondEnemy(handler, 1250, 200));
+        
 
         
         

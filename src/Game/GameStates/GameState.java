@@ -18,7 +18,8 @@ public class GameState extends State {
         super(handler);
         Player player = new Player(handler, 100, 100);
         SkelyEnemy skely= new SkelyEnemy(handler, 100, 100);
-        BaseWorld world = new World1(handler, "res/Maps/map1.map", player, skely);
+        Companion compy= new Companion(handler, 0, 0);
+        BaseWorld world = new World1(handler, "res/Maps/map1.map", player, skely, compy);
         handler.setWorld(world);
         handler.getWorld().getEntityManager().setPlayer(player);
         

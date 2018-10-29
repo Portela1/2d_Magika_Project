@@ -12,6 +12,7 @@ import Game.Items.Item;
 import Main.Handler;
 import Resources.Animation;
 import Resources.Images;
+import Worlds.World1;
 
 public class Companion extends CreatureBase{
 
@@ -55,7 +56,6 @@ public class Companion extends CreatureBase{
         animLeft = new Animation(animWalkingSpeed,Images.player_left);
         animRight = new Animation(animWalkingSpeed,Images.player_right);
         animUp = new Animation(animWalkingSpeed,Images.player_back);
-
         Compyinventory= new Inventory(handler);
     }
 
@@ -86,18 +86,12 @@ public class Companion extends CreatureBase{
         if(healthcounter>=120&& !isBeinghurt()){
             healthcounter=0;
         }
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
-        	 if(getVisual() == true) {
-             	setVisual(false);
+//        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
+        if(getVisual() == false) {
              	this.x =0;
              	this.y= 0;
-             }
-        	 else {
-        	setVisual(true);
-        	this.x = handler.getWorld().getEntityManager().getPlayer().getX() + 100;
-        	this.y = handler.getWorld().getEntityManager().getPlayer().getY();
-        	 }
-      }
+        	}
+//      }
        
         Compyinventory.tick();
 
@@ -105,7 +99,7 @@ public class Companion extends CreatureBase{
     }
 
 
-    private void checkIfMove() {
+    protected void checkIfMove() {
         xMove = 0;
         yMove = 0;
 
@@ -251,8 +245,9 @@ public class Companion extends CreatureBase{
 
     @Override
     public void die() {
-    	 
-    	 stat = true;
+    	 stat=true;
+    	 this.x=0;
+    	 this.y=0;
     }
 
 

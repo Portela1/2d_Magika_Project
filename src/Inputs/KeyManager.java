@@ -16,6 +16,7 @@ public class KeyManager implements KeyListener {
 	public boolean shift = false;
 	public boolean xbut = false;
 	public boolean gbut = false;
+	public boolean rbut = false;
 	
 	public KeyManager(){
 
@@ -53,6 +54,7 @@ public class KeyManager implements KeyListener {
 		shift = keys[KeyEvent.VK_SHIFT];
 		xbut = keys[KeyEvent.VK_X];
 		gbut = keys[KeyEvent.VK_G];
+		rbut = keys[KeyEvent.VK_R];
 		
 	}
 

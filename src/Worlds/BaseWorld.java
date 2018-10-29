@@ -1,6 +1,7 @@
 package Worlds;
 
 
+import Game.Entities.Creatures.Companion;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.EntityManager;
@@ -31,12 +32,10 @@ public class BaseWorld {
 
 
 
-    public BaseWorld(Handler handler, String path, Player player, SkelyEnemy skely) {
-
+    public BaseWorld(Handler handler, String path, Player player, SkelyEnemy skely, Companion compy) {
         this.handler=handler;
-        entityManager = new EntityManager(handler,player, skely);
+        entityManager = new EntityManager(handler,player, skely, compy);
         itemManager=new ItemManager(handler);
-
         loadWorld(path);
 
     }
@@ -49,8 +48,6 @@ public class BaseWorld {
             countP=30;
         }
         
-        
-
         if(handler.getKeyManager().pbutt && countP>=30){
             handler.getMouseManager().setUimanager(null);
             countP=0;
@@ -75,7 +72,6 @@ public class BaseWorld {
         itemManager.render(g);
         //Entities
         entityManager.render(g);
-
         entityManager.getPlayer().getInventory().render(g);
         entityManager.getPlayer().getSpellGUI().render(g);
 

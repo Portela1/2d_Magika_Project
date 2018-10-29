@@ -21,18 +21,18 @@ public class CaveWorld extends BaseWorld{
     private Player player;
     public static BaseWorld newWorld;
     
-    public CaveWorld(Handler handler, String path, Player player, SkelyEnemy skely) {
-        super(handler,path,player, skely);
+    public CaveWorld(Handler handler, String path, Player player, SkelyEnemy skely, Companion compy) {
+        super(handler,path,player, skely, compy);
         this.handler = handler;
         this.player=player;
         
-        newWorld = new NewWorld(handler,"res/Maps/newWorld.map",player, skely);
-        
+        newWorld = new NewWorld(handler,"res/Maps/newWorld.map",player, skely, compy);
+       
         entityManager.addEntity(new Door(handler, 800, 0,newWorld));
         
         entityManager.addEntity(new SecondEnemy(handler, 1250, 200));
-        
-        
+       
+       
         entityManager.addEntity(new DefRock(handler, 300, 600));
         entityManager.addEntity(new DefRock(handler, 100, 900));
         

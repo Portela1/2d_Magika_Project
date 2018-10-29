@@ -132,10 +132,15 @@ public class Player extends CreatureBase {
         
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)){
         
-        	if(handler.getWorld().equals(World1.caveWorld))
+        	if(handler.getWorld().equals(World1.caveWorld)){
         	handler.setWorld(CaveWorld.newWorld);
+        	this.x= 100;
+        	this.y =100;
+        	}
         	else {
         		handler.setWorld(World1.caveWorld);
+        		this.x=100;
+        		this.y=100;
         	}
         }
         
@@ -154,8 +159,11 @@ public class Player extends CreatureBase {
         	addOneMore();
         }
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
-        	companionSummon();
+        		companionSummon();
         }
+//        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_R)){
+//        		companionUnSummon();
+//        }
 
         //Inventory
         inventory.tick();
@@ -273,11 +281,23 @@ public class Player extends CreatureBase {
     		if(i.getName() == "CompCoin") {
     			System.out.println("CompanionSummoned");
     			i.setCount(i.getCount() - 1);
-    			;
-    			
+    			handler.getWorld().getEntityManager().getCompy().setVisual(true);
+    			handler.getWorld().getEntityManager().getCompy().setX(handler.getWorld().getEntityManager().getPlayer().getX()+50);
+            	handler.getWorld().getEntityManager().getCompy().setY(handler.getWorld().getEntityManager().getPlayer().getY());
     			
     			}}
     }
+//    public void companionUnSummon(){
+//    	for (Item i : getInventory().getInventoryItems()) {
+//    		if(i.getName() == "CompCoin") {
+//    			if(i.getCount() == 0){
+//    			System.out.println("Companion returned to his coin");
+//    			i.setCount(i.getCount() + 1);
+//    			handler.getWorld().getEntityManager().getCompy().setVisual(false);
+//    			}
+//    			
+//    			}}
+//    }
 
     @SuppressWarnings("Duplicates")
     @Override

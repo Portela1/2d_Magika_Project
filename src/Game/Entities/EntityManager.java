@@ -1,6 +1,7 @@
 package Game.Entities;
 
 
+import Game.Entities.Creatures.Companion;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
 import Main.Handler;
@@ -18,13 +19,8 @@ public class EntityManager {
     private Handler handler;
     private Player player;
     private SkelyEnemy skely;
-    public SkelyEnemy getSkely() {
-		return skely;
-	}
-
-	public void setSkely(SkelyEnemy skely) {
-		this.skely = skely;
-	}
+    private Companion compy;
+    
 
 	private ArrayList<EntityBase> entities;
     private Comparator<EntityBase> renderSorter = new Comparator<EntityBase>(){
@@ -36,13 +32,15 @@ public class EntityManager {
         }
     };
 
-    public EntityManager(Handler handler, Player player, SkelyEnemy skely){
+    public EntityManager(Handler handler, Player player, SkelyEnemy skely, Companion compy){
         this.handler = handler;
         this.player = player;
         this.skely= skely;
+        this.compy= compy;
         entities = new ArrayList<EntityBase>();
         addEntity(player);
         addEntity(skely);
+        addEntity(compy);
     }
 
     public void tick(){
@@ -93,5 +91,21 @@ public class EntityManager {
     public void setEntities(ArrayList<EntityBase> entities) {
         this.entities = entities;
     }
+    //companion and skely getters and setters. 
+    public Companion getCompy() {
+		return compy;
+	}
+
+	public void setCompy(Companion compy) {
+		this.compy = compy;
+	}
+
+	public SkelyEnemy getSkely() {
+		return skely;
+	}
+
+	public void setSkely(SkelyEnemy skely) {
+		this.skely = skely;
+	}
 
 }

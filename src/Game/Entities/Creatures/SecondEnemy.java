@@ -17,16 +17,12 @@ public class SecondEnemy extends SkelyEnemy  {
 
 
     private Animation animDown, animUp, animLeft, animRight;
-
     private Boolean attacking=false;
     public static Boolean stat = false;
-
     private int animWalkingSpeed = 150;
     private Inventory Skelyinventory;
     private Rectangle SkelyCam;
-
     private int healthcounter = 0;
-
     private Random randint;
     private int moveCount=0;
     private int direction;
@@ -43,12 +39,8 @@ public class SecondEnemy extends SkelyEnemy  {
         health=50;
 
         SkelyCam= new Rectangle();
-
-
-
         randint = new Random();
         direction = randint.nextInt(4) + 1;
-
         animDown = new Animation(animWalkingSpeed, Images.SkelyEnemy_front);
         animLeft = new Animation(animWalkingSpeed,Images.SkelyEnemy_left);
         animRight = new Animation(animWalkingSpeed,Images.SkelyEnemy_right);
