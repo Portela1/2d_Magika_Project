@@ -2,6 +2,7 @@ package Worlds;
 
 import Game.Entities.EntityBase;
 import Game.Entities.Creatures.Companion;
+import Game.Entities.Creatures.FinalBoss;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.Creatures.SecondEnemy;
@@ -43,7 +44,7 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new CoinRock(handler, 1300, 1000));
         entityManager.addEntity(new CoinRock(handler, 50, 1000));
         
-      
+        entityManager.addEntity(new FinalBoss(handler, 200, 500));
         
         
         entityManager.addEntity(new AtaRock(handler, 432, 543));

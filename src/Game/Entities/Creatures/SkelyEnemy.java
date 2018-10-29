@@ -17,22 +17,15 @@ public class SkelyEnemy extends CreatureBase  {
 
 
     private Animation animDown, animUp, animLeft, animRight;
-
     private Boolean attacking=false;
-   
-
     private int animWalkingSpeed = 150;
     private Inventory Skelyinventory;
     private Rectangle SkelyCam;
-
     private int healthcounter = 0;
-
     private Random randint;
     private int moveCount=0;
     private int direction;
     
-    
-
     public SkelyEnemy(Handler handler, float x, float y) {
         super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT);
         bounds.x=8*2;
@@ -41,19 +34,15 @@ public class SkelyEnemy extends CreatureBase  {
         bounds.height=14*2;
         speed=1.5f;
         health=50;
-
         SkelyCam= new Rectangle();
         x=this.x;
         y=this.y;
-
         randint = new Random();
         direction = randint.nextInt(4) + 1;
-
         animDown = new Animation(animWalkingSpeed, Images.SkelyEnemy_front);
         animLeft = new Animation(animWalkingSpeed,Images.SkelyEnemy_left);
         animRight = new Animation(animWalkingSpeed,Images.SkelyEnemy_right);
         animUp = new Animation(animWalkingSpeed,Images.SkelyEnemy_back);
-
         Skelyinventory= new Inventory(handler);
     }
 
