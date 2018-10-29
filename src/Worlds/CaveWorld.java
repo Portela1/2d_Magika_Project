@@ -33,6 +33,10 @@ public class CaveWorld extends BaseWorld{
         entityManager.addEntity(new SecondEnemy(handler, 1250, 200));
         
         
+        entityManager.addEntity(new DefRock(handler, 300, 600));
+        entityManager.addEntity(new DefRock(handler, 100, 900));
+        
+        
         
         
         

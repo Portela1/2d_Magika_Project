@@ -38,16 +38,18 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new FireRock(handler, 1000, 83));
         
         entityManager.addEntity(new CoinRock(handler, 750, 300));
-        entityManager.addEntity(new CoinRock(handler, 750, 400));
+        entityManager.addEntity(new CoinRock(handler, 100, 600));
+        entityManager.addEntity(new CoinRock(handler, 1000, 400));
+        entityManager.addEntity(new CoinRock(handler, 1300, 1000));
+        entityManager.addEntity(new CoinRock(handler, 50, 1000));
         
-        entityManager.addEntity(new SpeedRock(handler, 834, 122));
+      
         
         
         entityManager.addEntity(new AtaRock(handler, 432, 543));
        
         
-        entityManager.addEntity(new DefRock(handler, 842, 343));
-        entityManager.addEntity(new DefRock(handler, 843, 432));
+        
       
         entityManager.addEntity(new Companion(handler, 0, 0));
         entityManager.getPlayer().setX(spawnX);
