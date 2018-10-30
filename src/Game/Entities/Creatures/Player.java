@@ -118,6 +118,7 @@ public class Player extends CreatureBase {
      
         power();
         speedMove();
+        sheild();
  
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_SHIFT)){
         	health+=2;
@@ -266,12 +267,12 @@ public class Player extends CreatureBase {
     		}
     	}
     }
-    public void lives() {
+    public void sheild() {
     	for (Item i : getInventory().getInventoryItems()) {
-    		if(i.getName() == "DefCoin" && health <= 0) {
-    			System.out.println("Revive");
+    		if(i.getName() == "DefCoin") {
+    			System.out.println("Sheild");
     			i.setCount(i.getCount() - 1);
-    			health+=75;		
+    			handler.getWorld().getEntityManager().getBossy().setAttack(3);	
     		}}
     	
     }

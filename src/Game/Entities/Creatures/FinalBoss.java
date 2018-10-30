@@ -24,7 +24,7 @@ public class FinalBoss extends CreatureBase {
     private int moveCount=0;
     private int direction;
     private boolean visible= false;
-	
+    
 	public FinalBoss(Handler handler, float x, float y) {
 		super(handler, x, y, 100, 100);
 		bounds.x=8;
@@ -43,6 +43,7 @@ public class FinalBoss extends CreatureBase {
         animRight = new Animation(animWalkingSpeed,Images.SkelyEnemy_right);
         animUp = new Animation(animWalkingSpeed,Images.SkelyEnemy_back);
         finalBossinventory= new Inventory(handler);
+        attack = 6;
 		
 	}
 	@Override
@@ -297,6 +298,13 @@ public class FinalBoss extends CreatureBase {
 	}
 	public void setVisible(boolean visible) {
 		this.visible = visible;
+	}
+	
+	public int getAttack(){
+		return attack;
+	}
+	public void setAttack(int attack){
+		this.attack = attack;
 	}
 
 }

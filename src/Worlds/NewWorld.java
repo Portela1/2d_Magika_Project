@@ -29,7 +29,7 @@ public class NewWorld extends BaseWorld{
         this.handler = handler;
         this.player=player;
         
-        entityManager.addEntity(new SpeedRock(handler, 100, 200));
+        entityManager.addEntity(new DefRock(handler, 100, 200));
         
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
