@@ -137,12 +137,19 @@ public class Player extends CreatureBase {
         	handler.setWorld(CaveWorld.newWorld);
         	this.x= 100;
         	this.y =100;
+        	handler.getWorld().getEntityManager().getCompy().setX(handler.getWorld().getEntityManager().getPlayer().getX()+50);
+        	handler.getWorld().getEntityManager().getCompy().setY(handler.getWorld().getEntityManager().getPlayer().getY());
         	}
         	else {
         		handler.setWorld(World1.caveWorld);
         		this.x=100;
         		this.y=100;
+
         		FirstQuestHuman.stat = true;
+
+        		handler.getWorld().getEntityManager().getCompy().setX(handler.getWorld().getEntityManager().getPlayer().getX()+50);
+            	handler.getWorld().getEntityManager().getCompy().setY(handler.getWorld().getEntityManager().getPlayer().getY());
+
         	}
         }
         
@@ -160,7 +167,7 @@ public class Player extends CreatureBase {
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_X)){
         	addOneMore();
         }
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_G) && (handler.getWorld().equals(World1.caveWorld) || handler.getWorld().equals(CaveWorld.newWorld))) {
         		companionSummon();
         }
 //        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_R)){

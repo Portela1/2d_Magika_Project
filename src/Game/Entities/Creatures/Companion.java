@@ -86,12 +86,12 @@ public class Companion extends CreatureBase{
         if(healthcounter>=120&& !isBeinghurt()){
             healthcounter=0;
         }
-//        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
+
         if(getVisual() == false) {
              	this.x= 5000;
              	this.y= 5000;
         	}
-//      }
+        
        
         Compyinventory.tick();
 
