@@ -1,5 +1,6 @@
 package Worlds;
 import Game.Entities.Creatures.Companion;
+import Game.Entities.Creatures.FinalBoss;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SecondEnemy;
 import Game.Entities.Creatures.SkelyEnemy;
@@ -23,8 +24,8 @@ public class NewWorld extends BaseWorld{
     
     
     
-    public NewWorld(Handler handler, String path, Player player, SkelyEnemy skely, Companion compy) {
-        super(handler,path,player, skely, compy);
+    public NewWorld(Handler handler, String path, Player player, SkelyEnemy skely, Companion compy, FinalBoss bossy) {
+        super(handler,path,player, skely, compy, bossy);
         this.handler = handler;
         this.player=player;
         
