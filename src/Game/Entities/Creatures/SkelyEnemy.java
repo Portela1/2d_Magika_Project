@@ -6,6 +6,8 @@ import Game.Items.Item;
 import Main.Handler;
 import Resources.Animation;
 import Resources.Images;
+import Worlds.CaveWorld;
+import Worlds.World1;
 
 import java.awt.*;
 import java.util.Random;
@@ -25,8 +27,9 @@ public class SkelyEnemy extends CreatureBase  {
     private Random randint;
     private int moveCount=0;
     private int direction;
+    private boolean visible = true;
     
-    public SkelyEnemy(Handler handler, float x, float y) {
+	public SkelyEnemy(Handler handler, float x, float y) {
         super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT);
         bounds.x=8*2;
         bounds.y=18*2;
@@ -73,15 +76,20 @@ public class SkelyEnemy extends CreatureBase  {
         if(healthcounter>=120&& !isBeinghurt()){
             healthcounter=0;
         }
-
-
+        if(handler.getWorld().equals(CaveWorld.newWorld) || handler.getWorld().equals(World1.caveWorld) ){
+        	setVisible(false);
+        	this.x= 4000;
+        	this.y= 4000;
+        	
+        }
+        
         Skelyinventory.tick();
 
 
     }
 
 
-    private void checkIfMove() {
+    protected void checkIfMove() {
         xMove = 0;
         yMove = 0;
 
@@ -89,6 +97,9 @@ public class SkelyEnemy extends CreatureBase  {
         SkelyCam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
         SkelyCam.width = 64 * 7;
         SkelyCam.height = 64 * 7;
+        if(isVisible()){
+        	
+        
         if (SkelyCam.contains(handler.getWorld().getEntityManager().getCompy().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getCompy().getY() - handler.getGameCamera().getyOffset())
                 || SkelyCam.contains(handler.getWorld().getEntityManager().getCompy().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getCompy().getWidth(), handler.getWorld().getEntityManager().getCompy().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getCompy().getHeight())) {
 
@@ -218,7 +229,8 @@ public class SkelyEnemy extends CreatureBase  {
                     xMove = speed;
                     break;
 
-            }
+            	}
+        	}
         }
     }
 
@@ -238,7 +250,16 @@ public class SkelyEnemy extends CreatureBase  {
     @Override
     public void die() {
     	 handler.getWorld().getItemManager().addItem(Item.key.createNew((int)x + bounds.x,(int)y + bounds.y,1));
-    	 this.x= 0;
-    	 this.y =0;
+    	 this.x= 4000;
+    	 this.y= 4000;
     }
+
+    public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+
 }

@@ -88,8 +88,8 @@ public class Companion extends CreatureBase{
         }
 //        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
         if(getVisual() == false) {
-             	this.x =0;
-             	this.y= 0;
+             	this.x= 5000;
+             	this.y= 5000;
         	}
 //      }
        
@@ -109,7 +109,61 @@ public class Companion extends CreatureBase{
         CompyCam.height = 64 * 7;
         int adj = 0;
         if(getVisual() == true) {
-        	if(CompyCam.contains(handler.getWorld().getEntityManager().getSkely().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getSkely().getY() - handler.getGameCamera().getyOffset())
+        	if(CompyCam.contains(handler.getWorld().getEntityManager().getBossy().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getBossy().getY() - handler.getGameCamera().getyOffset())
+                    || CompyCam.contains(handler.getWorld().getEntityManager().getBossy().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getBossy().getWidth(), handler.getWorld().getEntityManager().getBossy().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getBossy().getHeight())) {
+
+                Rectangle cb = getCollisionBounds(0, 0);
+                Rectangle ar = new Rectangle();
+                int arSize = 13;
+                ar.width = arSize;
+                ar.height = arSize;
+
+                if (lu) {
+                    ar.x = cb.x + cb.width / 2 - arSize / 2;
+                    ar.y = cb.y - arSize;
+                } else if (ld) {
+                    ar.x = cb.x + cb.width / 2 - arSize / 2;
+                    ar.y = cb.y + cb.height;
+                } else if (ll) {
+                    ar.x = cb.x - arSize;
+                    ar.y = cb.y + cb.height / 2 - arSize / 2;
+                } else if (lr) {
+                    ar.x = cb.x + cb.width;
+                    ar.y = cb.y + cb.height / 2 - arSize / 2;
+                }
+
+                for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
+                    if (e.equals(this))
+                        continue;
+                    if(e.getCollisionBounds(0, 0).intersects(ar)){
+                    	checkAttacks();
+                        return;
+                    }
+                }
+
+
+                if (x >= handler.getWorld().getEntityManager().getBossy().getX() - 8 && x <= handler.getWorld().getEntityManager().getBossy().getX() + 8) {//nada
+                	xMove = 0;
+                } else if (x < handler.getWorld().getEntityManager().getBossy().getX()) {//move right
+
+                    xMove = speed;
+
+                } else if (x > handler.getWorld().getEntityManager().getBossy().getX()) {//move left
+
+                    xMove = -speed;
+                }
+
+                if (y >= handler.getWorld().getEntityManager().getBossy().getY() - 8 && y <= handler.getWorld().getEntityManager().getBossy().getY() + 8) {//nada
+                    yMove = 0;
+                } else if (y < handler.getWorld().getEntityManager().getBossy().getY()) {//move down
+                    yMove = speed;
+
+                } else if (y > handler.getWorld().getEntityManager().getBossy().getY()) {//move up
+                    yMove = -speed;
+                }
+
+
+            } else if(CompyCam.contains(handler.getWorld().getEntityManager().getSkely().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getSkely().getY() - handler.getGameCamera().getyOffset())
                     || CompyCam.contains(handler.getWorld().getEntityManager().getSkely().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getSkely().getWidth(), handler.getWorld().getEntityManager().getSkely().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getSkely().getHeight())) {
 
                 Rectangle cb = getCollisionBounds(0, 0);
@@ -163,11 +217,7 @@ public class Companion extends CreatureBase{
                 }
 
 
-            } 
-
-            
-        	
-        	else if (CompyCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset()+ adj, handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset()+ adj)
+            } else if (CompyCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset()+ adj, handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset()+ adj)
                     || CompyCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset()+adj + handler.getWorld().getEntityManager().getPlayer().getWidth(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset()+adj + handler.getWorld().getEntityManager().getPlayer().getHeight())) {
 
                 Rectangle cb = getCollisionBounds(0, 0);

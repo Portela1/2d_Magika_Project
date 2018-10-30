@@ -1,5 +1,6 @@
 package Worlds;
 import Game.Entities.Creatures.Companion;
+import Game.Entities.Creatures.FinalBoss;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SecondEnemy;
 import Game.Entities.Creatures.SkelyEnemy;
@@ -21,19 +22,21 @@ public class CaveWorld extends BaseWorld{
     private Player player;
     public static BaseWorld newWorld;
     
-    public CaveWorld(Handler handler, String path, Player player, SkelyEnemy skely, Companion compy) {
-        super(handler,path,player, skely, compy);
+    public CaveWorld(Handler handler, String path, Player player, SkelyEnemy skely, Companion compy, FinalBoss bossy) {
+        super(handler,path,player, skely, compy, bossy);
         this.handler = handler;
         this.player=player;
+ 
         
-        newWorld = new NewWorld(handler,"res/Maps/newWorld.map",player, skely, compy);
-        
+
+        newWorld = new NewWorld(handler,"res/Maps/newWorld.map",player, skely, compy, bossy);
+
        
         entityManager.addEntity(new Door(handler, 800, 0,newWorld));
         
         entityManager.addEntity(new SecondEnemy(handler, 1250, 200));
        
-       
+        
         entityManager.addEntity(new DefRock(handler, 300, 600));
         entityManager.addEntity(new DefRock(handler, 100, 900));
         

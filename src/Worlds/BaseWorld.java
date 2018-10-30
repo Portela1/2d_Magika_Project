@@ -2,6 +2,7 @@ package Worlds;
 
 
 import Game.Entities.Creatures.Companion;
+import Game.Entities.Creatures.FinalBoss;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.EntityManager;
@@ -32,9 +33,9 @@ public class BaseWorld {
 
 
 
-    public BaseWorld(Handler handler, String path, Player player, SkelyEnemy skely, Companion compy) {
+    public BaseWorld(Handler handler, String path, Player player, SkelyEnemy skely, Companion compy, FinalBoss bossy) {
         this.handler=handler;
-        entityManager = new EntityManager(handler,player, skely, compy);
+        entityManager = new EntityManager(handler,player, skely, compy, bossy);
         itemManager=new ItemManager(handler);
         loadWorld(path);
 
