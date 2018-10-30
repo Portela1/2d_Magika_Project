@@ -76,6 +76,8 @@ public class Door extends StaticEntity {
             g.drawImage(Images.loading,0,0,800,600,null);
             handler.setWorld(world);
             FirstQuestHuman.stat = false;
+            handler.getWorld().getEntityManager().getPlayer().setX(100);
+            handler.getWorld().getEntityManager().getPlayer().setY(100);
 
         }}
 

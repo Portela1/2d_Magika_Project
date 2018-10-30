@@ -1,6 +1,7 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
+import Game.Entities.Statics.FirstQuestHuman;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
 import Main.Handler;
@@ -250,6 +251,7 @@ public class SecondEnemy extends CreatureBase  {
     	 handler.getWorld().getItemManager().addItem(Item.CompPower.createNew((int)x + bounds.x,(int)y + bounds.y,1));
     	 this.x= 4000;
     	 this.y= 4000;
+    	 FirstQuestHuman.stat = true;
     }
 
     public boolean isVisible() {
