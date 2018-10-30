@@ -26,12 +26,12 @@ public class FinalBoss extends CreatureBase {
     private boolean visible= false;
 	
 	public FinalBoss(Handler handler, float x, float y) {
-		super(handler, x, y, 200, 200);
+		super(handler, x, y, 100, 100);
 		bounds.x=8;
         bounds.y=18;
-        bounds.width=16*10;
-        bounds.height=14*14;
-        speed=1.5f;
+        bounds.width=16*5;
+        bounds.height=14*7;
+        speed=1.5f*2;
         health=120;
         finalBossCam= new Rectangle();
         x=this.x;
@@ -210,17 +210,17 @@ public class FinalBoss extends CreatureBase {
 	            ar.height = arSize;
 
 	            if (lu) {
-	                ar.x = cb.x + cb.width / 2 - arSize / 2;
+	                ar.x = cb.x + cb.width / 2 ;
 	                ar.y = cb.y - arSize;
 	            } else if (ld) {
-	                ar.x = cb.x + cb.width / 2 - arSize / 2;
+	                ar.x = cb.x + cb.width / 2 ;
 	                ar.y = cb.y + cb.height;
 	            } else if (ll) {
 	                ar.x = cb.x - arSize;
-	                ar.y = cb.y + cb.height / 2 - arSize / 2;
+	                ar.y = cb.y + cb.height / 2 ;
 	            } else if (lr) {
 	                ar.x = cb.x + cb.width;
-	                ar.y = cb.y + cb.height / 2 - arSize / 2;
+	                ar.y = cb.y + cb.height / 2 ;
 	            }
 
 	            for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
